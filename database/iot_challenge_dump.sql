@@ -19,6 +19,9 @@
 -- Table structure for table `bus`
 --
 
+CREATE DATABASE IF NOT EXISTS `iot-challenge`;
+USE `iot-challenge`;
+
 DROP TABLE IF EXISTS `bus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -117,6 +120,11 @@ CREATE TABLE `route` (
 --
 
 LOCK TABLES `route` WRITE;
+
+INSERT INTO `route` (`name`, `number`) VALUES
+	('Arboleda', 209),
+	('San-Nicolas', 1);
+
 /*!40000 ALTER TABLE `route` DISABLE KEYS */;
 /*!40000 ALTER TABLE `route` ENABLE KEYS */;
 UNLOCK TABLES;
