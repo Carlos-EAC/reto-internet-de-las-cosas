@@ -19,8 +19,8 @@
 -- Table structure for table `bus`
 --
 
-CREATE DATABASE IF NOT EXISTS `iot-challenge`;
-USE `iot-challenge`;
+CREATE DATABASE IF NOT EXISTS `iot_challenge`;
+USE `iot_challenge`;
 
 DROP TABLE IF EXISTS `bus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
