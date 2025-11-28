@@ -14,4 +14,9 @@ router.get(
     sensRfid.getRegisteredRoutes
 );
 
+router.post(
+    constants.contextURL + constants.projectAPI + constants.getCustomersStatus,
+    sensRfid.getCustomersStatus
+);
+
 module.exports = router;

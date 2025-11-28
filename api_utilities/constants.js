@@ -1,3 +1,6 @@
+const readline = require("readline");
+const chalk = require("chalk");
+
 const dbConfig = require("./myCredentials");
 
 // SECTION: CONTEXTO URL --->
@@ -7,6 +10,7 @@ const serverPort = 3000;
 
 // Obtención
 const getCustomers = "/getCustomers";
+const getCustomersStatus = "/getCustomersStatus";
 const getRoutes = "/getRoutes";
 
 // Inserciones
@@ -20,6 +24,8 @@ const createBus = "/createBus";
 
 // Obtención
 const getCustomersQuery = `SELECT * FROM customer`;
+const getCustomerStatusQuery = `SELECT status FROM customer WHERE rfid = (?)`;
+
 const getRoutesQuery = `SELECT * FROM route`;
 
 // Inserciones
@@ -35,6 +41,7 @@ module.exports = {
     contextURL,
     projectAPI,
     getCustomers,
+    getCustomersStatus,
     getRoutes,
     addCustomer,
     addPickup,
@@ -42,6 +49,7 @@ module.exports = {
     createBus,
     getCustomersQuery,
     getRoutesQuery,
+    getCustomerStatusQuery,
     insertCustomerQuery,
     insertPickupQuery,
     createRouteQuery,

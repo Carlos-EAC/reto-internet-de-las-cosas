@@ -82,7 +82,6 @@ class QueryResult {
 
 async function getData(query) {
     try {
-        console.log("Get Data");
         let conn = await pool.getConnection();
         const [data, fields] = await conn.query(query);
         conn.release();
@@ -104,7 +103,6 @@ async function getData(query) {
 
 async function getDataWithParams(query, params) {
     try {
-        console.log("Get Data with Params");
         const conn = await pool.getConnection();
         const [data, fields] = await conn.query(query, params);
         conn.release();
