@@ -1,7 +1,7 @@
 const readline = require("readline");
 const chalk = require("chalk");
 
-const dbConfig = require("./myCredentials");
+const dbConfig = require("./credentials");
 
 // SECTION: CONTEXTO URL --->
 const contextURL = "/iot-challenge";

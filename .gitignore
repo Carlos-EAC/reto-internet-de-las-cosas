@@ -1,2 +1,17 @@
-api_utilities/myCredentials.js
+# Ignore extension-less files (executables)
+*
+!*/
+!*.*
 
+# Ignore .txt output files
+*.txt
+!README.txt
+
+# Ignore debugger files (.dSYM directories)
+*.dSYM/
+
+# Ignore MacOS files (.DS_Store)
+.DS_Store
+
+# Ignore credentials file for security reasons. This file must be manually shared instead
+api_root/api_utilities/credentials.js
