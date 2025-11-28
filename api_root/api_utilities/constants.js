@@ -3,23 +3,22 @@ const chalk = require("chalk");
 
 const dbConfig = require("./credentials");
 
-// SECTION: CONTEXTO URL --->
+// server general configuration
 const contextURL = "/iot-challenge";
 const projectAPI = "/api";
 const serverPort = 3000;
 
-// Obtención
+// GETs
 const getCustomersStatus = "/getCustomersStatus";
 
-// Inserciones
+// POSTs
 const addPickup = "/insertPickup";
 
-// -- Querys para la Obtención, Inserción & Eliminado de Datos. --
-
-// Obtención
+// SQL queries
+// // for selecting values
 const getCustomerStatusQuery = `SELECT status FROM customer WHERE rfid = (?)`;
 
-// Inserciones
+// // for inserting values
 const insertPickupQuery = `INSERT INTO pickup (route_id, bus_id) VALUES (?, ?)`;
 
 module.exports = {
