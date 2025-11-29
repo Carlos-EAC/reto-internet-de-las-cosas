@@ -1,4 +1,4 @@
-const MySQL = require("../database/MySQLFuncs");
+const MySQL = require("../database/MySQLMngr");
 const chalk = require("chalk");
 const constants = require("../api_utilities/constants");
 
