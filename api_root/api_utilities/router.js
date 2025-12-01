@@ -9,4 +9,9 @@ router.post(
     sensorRfid.getCustomersStatus
 );
 
+router.post(
+    constants.contextURL + constants.projectAPI + constants.addPickup,
+    sensorRfid.insertPickup
+);
+
 module.exports = router;

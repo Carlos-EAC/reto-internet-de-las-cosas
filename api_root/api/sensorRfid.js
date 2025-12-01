@@ -48,6 +48,50 @@ async function getCustomersStatus(req, res) {
 
 async function insertPickup(req, res) {
     try {
+        var receivedMacAddress = req.body.macAddress;
+
+        if (receivedMacAddress == null) {
+            return res.status(400).json({
+                status: "obtention error",
+                description: "MAC address is empty",
+            });
+        }
+
+        console.log(
+            chalk.yellow(`Attempting to get bus from MAC address ${receivedMacAddress}`)
+        );
+        let query = constants.getBusFromMacAddressQuery;
+        let parameters = [receivedMacAddress];
+        let queryResult = await MySQL.getDataWithParams(query, parameters);
+
+        queryRows = queryResult.getRows();
+        bus_id = queryRows[0]["id"];
+
+
+        console.log(
+            chalk.yellow(`Attempting to get route from bus ${bus_id}`)
+        );
+        query = constants.getRouteFromBusQuery;
+        parameters = [bus_id];
+        queryResult = await MySQL.getDataWithParams(query, parameters);
+
+        queryRows = queryResult.getRows();
+        route_id = queryRows[0]["route_id"];
+
+
+        console.log(
+            chalk.yellow(`Attempting to insert pickup with time ${Date()}`)
+        );
+        query = constants.insertPickupQuery;
+        var unformattedTime = new Date(); // looks like this by default: Sun Nov 30 2025 18:52:40 GMT-0600 (Central Standard Time)
+        // change it to the MySQL default format: 2025-11-30 18:52:40
+        var pickupTime = unformattedTime.toISOString().slice(0,19).replace('T',' ');
+
+        parameters = [route_id, bus_id, pickupTime];
+        queryResult = await MySQL.getDataWithParams(query, parameters);
+
+        res.status(200);
+        res.json(queryResult);
     } catch (error) {
         res.status(500).json({
             status: "error",

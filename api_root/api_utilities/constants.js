@@ -17,9 +17,11 @@ const addPickup = "/insertPickup";
 // SQL queries
 // // for selecting values
 const getCustomerStatusQuery = `SELECT status FROM customer WHERE rfid = (?)`;
+const getBusFromMacAddressQuery = `SELECT id FROM bus WHERE mac_address = (?)`;
+const getRouteFromBusQuery = `SELECT route_id FROM bus WHERE id = (?)`;
 
 // // for inserting values
-const insertPickupQuery = `INSERT INTO pickup (route_id, bus_id) VALUES (?, ?)`;
+const insertPickupQuery = `INSERT INTO pickup (route_id, bus_id, date) VALUES (?, ?, ?)`;
 
 module.exports = {
     ...dbCredentials,
@@ -29,5 +31,7 @@ module.exports = {
     getCustomersStatus,
     addPickup,
     getCustomerStatusQuery,
+    getBusFromMacAddressQuery,
+    getRouteFromBusQuery,
     insertPickupQuery,
 };
