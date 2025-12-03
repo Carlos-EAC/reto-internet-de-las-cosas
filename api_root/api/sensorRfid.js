@@ -1,5 +1,6 @@
 const MySQL = require("../database/MySQLMngr");
 const chalk = require("chalk");
+const say = require("say");
 const constants = require("../api_utilities/constants");
 
 async function getCustomersStatus(req, res) {
@@ -30,8 +31,17 @@ async function getCustomersStatus(req, res) {
         let customerStatus = "UNIDENTIFIED";
         if (qRowsCount === 0) {
             console.log(chalk.magenta(`User was not found!`));
+
+            say.speak("Tarjeta no registrada", "paulina");
         } else {
             customerStatus = queryRows[0]["status"];
+
+            if (customerStatus == "APPROVED") {
+                say.speak("Aprobado", "paulina");
+            } else {
+                // UNNAPROVED
+                say.speak("No aprobado", "paulina");
+            }
         }
 
         console.log(chalk.cyan(`Obtained Status: ${customerStatus}`));
